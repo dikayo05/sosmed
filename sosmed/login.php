@@ -18,8 +18,9 @@ if (isset($_POST['login'])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $check = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM tbl_user WHERE username = '$username' AND password = '$password'"));
-    $data = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM tbl_user WHERE username = '$username' AND password = '$password'"));
+    $query = mysqli_query($conn,"SELECT * FROM tbl_user WHERE username = '$username' AND password = '$password'");
+    $check = mysqli_num_rows($query);
+    $data = mysqli_fetch_array($query);
 
     if ($check == 1) {
         if ($data['uid'] > 1) {
